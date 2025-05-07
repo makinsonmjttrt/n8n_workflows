@@ -1,7 +1,82 @@
 {
   "name": "Social Media Automation",
   "nodes": [
-    {
+    { {
+  "parameters": {
+    "method": "POST",
+    "url": "https://api.bannerbear.com/v2/images",
+    "authentication": "headerAuth",
+    "sendHeaders": true,
+    "headerParameters": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "value": "Bearer YOUR_BANNERBEAR_API_KEY"
+        }
+      ]
+    },
+    "sendBody": true,
+    "bodyParameters": {
+      "parameters": [
+        {
+          "name": "template",
+          "value": "your-template-id"
+        },
+        {
+          "name": "modifications",
+          "value": [
+            { "name": "title", "text": "Generated Title" },
+            { "name": "subtitle", "text": "Generated Subtitle" }
+          ]
+        }
+      ]
+    }
+  },
+  "type": "n8n-nodes-base.httpRequest",
+  "typeVersion": 1,
+  "position": [-500, 60],
+  "id": "bannerbear-node-id",
+  "name": "Bannerbear Image Creation",
+  "disabled": false
+},
+{
+  "parameters": {
+    "method": "POST",
+    "url": "https://api.blotatot.com/v1/videos",
+    "authentication": "headerAuth",
+    "sendHeaders": true,
+    "headerParameters": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "value": "Bearer YOUR_BLOTATOT_API_KEY"
+        }
+      ]
+    },
+    "sendBody": true,
+    "bodyParameters": {
+      "parameters": [
+        {
+          "name": "template_id",
+          "value": "your-video-template-id"
+        },
+        {
+          "name": "data",
+          "value": {
+            "text": "Generated Video Text",
+            "images": ["https://example.com/image1.jpg"]
+          }
+        }
+      ]
+    }
+  },
+  "type": "n8n-nodes-base.httpRequest",
+  "typeVersion": 1,
+  "position": [-500, -100],
+  "id": "blotatot-node-id",
+  "name": "Blotatot Video Creation",
+  "disabled": false
+}
       "parameters": {
         "updates": [
           "message"
